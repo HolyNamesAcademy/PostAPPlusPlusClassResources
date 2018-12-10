@@ -1,0 +1,52 @@
+[push]
+    default = current
+
+[rebase]
+    autosquash = true
+    autostash = true
+
+[diff]
+    # Git diff will use (i)ndex, (w)ork tree, (c)ommit and (o)bject
+    # instead of a/b/c/d as prefixes for patches
+    mnemonicprefix = true
+
+[color]
+    ui = auto            # covers diff = true, status = auto, branch = auto
+    interactive = auto
+
+[core]
+    pager = less -RFSX
+    autocrlf = false
+
+[alias]
+    # add
+    a = add -A
+
+    # branches
+    switch = checkout
+    newbranch = "!sh -c \"git fetch && git checkout -b $1 origin/master --no-track\" -"
+
+    # cleanup
+    cleanup = !git remote prune origin && git gc
+    nuke = clean -dfx
+
+    # commit
+    cm = commit -m
+    amend = commit --amend
+
+    # diff
+    d = diff --color-words
+    dc = diff --color-words --cached
+
+    # log
+    history = log --pretty=format:\"%Cred%h%Creset %ad | %C(blue)%d%Creset %s [%C(green)%an%Creset]\" --graph --date=short
+
+    # reset
+    unstage = reset HEAD
+    back = reset --soft HEAD^
+
+    # show
+    info = show --pretty="fuller" --name-status
+
+[include]
+    path = ~/.os.gitconfig
