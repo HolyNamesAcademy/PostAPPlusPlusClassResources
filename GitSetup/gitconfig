@@ -48,5 +48,7 @@
     # show
     info = show --pretty="fuller" --name-status
 
+    sync = !git fetch origin && git merge origin/master
+
 [include]
     path = ~/.os.gitconfig
